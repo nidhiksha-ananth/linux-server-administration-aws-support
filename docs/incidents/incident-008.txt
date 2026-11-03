@@ -1,0 +1,28 @@
+Incident ID: LINUX-008
+Title: EC2 Network Connectivity Investigation
+
+Environment:
+AWS EC2 - Ubuntu 26.04.1 LTS
+Region: ap-south-1
+
+Investigation:
+- Used ip -br addr to inspect network interfaces.
+- Used ip route to inspect routing.
+- Tested gateway connectivity using ping.
+- Tested external HTTPS connectivity using curl.
+- Checked DNS configuration using resolvectl.
+- Tested DNS resolution using getent.
+- Reviewed EC2 security group SSH inbound rule.
+
+Findings:
+- Network interface ens5 was UP.
+- Default gateway was reachable.
+- External HTTPS connectivity succeeded.
+- DNS resolution succeeded.
+- SSH inbound access was restricted to a specific source IP.
+
+Resolution:
+Network connectivity was functioning.
+No network configuration changes required.
+
+Status: Resolved.

@@ -1,0 +1,23 @@
+Incident ID: LINUX-006
+Title: SSH Service and Authentication Investigation
+
+Environment:
+AWS EC2 - Ubuntu 26.04.1 LTS
+
+Investigation:
+- Checked SSH service using systemctl.
+- Verified TCP port 22 using ss.
+- Reviewed SSH logs using journalctl.
+- Investigated authentication logs.
+
+Findings:
+- SSH service was active and running.
+- SSH listened on IPv4 and IPv6 port 22.
+- Successful public-key authentication was recorded.
+- No failed-password event was confirmed.
+
+Resolution:
+SSH service was functioning correctly.
+No configuration changes required.
+
+Status: Resolved.

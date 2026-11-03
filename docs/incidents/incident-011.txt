@@ -1,0 +1,25 @@
+Incident ID: LINUX-011
+Title: Linux Server Health Check Automation
+
+Environment:
+AWS EC2 - Ubuntu 26.04.1 LTS
+
+Implementation:
+- Created Bash health-check script.
+- Made script executable.
+- Collected server date and hostname.
+- Collected uptime and load average.
+- Checked memory and disk usage.
+- Listed top memory-consuming processes.
+- Executed the script successfully.
+
+Findings:
+- Load average: 0.00 during the recorded test.
+- Available memory: 590 MiB.
+- Root disk usage: 32%.
+- No immediate resource pressure observed.
+
+Resolution:
+Automated server health-check script created and tested successfully.
+
+Status: Completed.

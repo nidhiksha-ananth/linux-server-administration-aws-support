@@ -1,0 +1,26 @@
+Incident ID: LINUX-002
+Issue: Nginx service failed to start
+
+Investigation:
+1. Checked failed services using systemctl --failed.
+2. Investigated logs using journalctl.
+3. Identified a missing Nginx configuration target.
+4. Found a broken symbolic link in sites-enabled.
+5. Inspected nginx.conf and identified the include directive.
+
+Root Cause:
+Broken symbolic link:
+ /etc/nginx/sites-enabled/mysite
+
+Resolution:
+1. Removed the broken symbolic link.
+2. Validated configuration using nginx -t.
+3. Started Nginx using systemctl start nginx.
+
+Verification:
+1. Confirmed active (running) using systemctl status.
+2. Tested HTTP response using curl -I http://localhost.
+3. Received HTTP/1.1 200 OK.
+
+Final Status: Resolved in simulated Linux support lab.
+Environment: Ubuntu 26.04 LTS on WSL2.

@@ -1,0 +1,25 @@
+Incident ID: LINUX-009
+Title: EC2 CPU Monitoring and CloudWatch Alarm Setup
+
+Environment:
+AWS EC2 - Ubuntu 26.04.1 LTS
+Region: ap-south-1
+
+Investigation:
+- Reviewed EC2 CPUUtilization metric.
+- Observed CPU utilization of 0.59%.
+- Created CloudWatch alarm linux-support-high-cpu.
+- Configured Average statistic and 5-minute period.
+- Set threshold to greater than 70%.
+- Created alarm without notification actions.
+
+Findings:
+- Initial CPU utilization was low.
+- CloudWatch alarm was successfully created.
+- Initial alarm state was INSUFFICIENT_DATA.
+- Additional metric datapoints were required for evaluation.
+
+Resolution:
+CloudWatch monitoring and alarm configuration completed.
+
+Status: Configured.

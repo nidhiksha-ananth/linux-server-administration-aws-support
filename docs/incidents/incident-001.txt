@@ -1,0 +1,16 @@
+Incident ID: LINUX-001
+Issue: Application database connection failure
+
+Investigation:
+1. Created and inspected application.log.
+2. Used grep to identify database-related errors.
+3. Used tail to inspect recent log entries.
+4. Used tail -f to monitor new log entries.
+
+Findings:
+- Database connection failed.
+- Database timeout occurred.
+- Application restart message was recorded.
+
+Status: Investigation completed in a simulated lab.
+Environment: Ubuntu 26.04 LTS on WSL2.

@@ -1,0 +1,41 @@
+# Incident Report – LINUX-003
+
+**Incident ID:** LINUX-003  
+**Issue:** Gateway Ping Failure Investigation  
+**Environment:** Ubuntu 26.04 LTS on WSL2  
+**Status:** Investigation Completed
+
+### 1. Problem Description
+The Linux system was unable to receive ICMP ping responses from its default gateway (`172.30.48.1`). The ping test showed 100% packet loss.
+
+### 2. Investigation Performed
+
+1. Checked the routing table using `ip route` and identified the default gateway as `172.30.48.1`.
+2. Tested gateway connectivity using `ping -c 4 172.30.48.1`.
+3. Checked gateway neighbor information using `ip neigh show 172.30.48.1`.
+4. Tested DNS resolution using `getent hosts google.com`.
+5. Tested HTTPS connectivity using `curl -I https://google.com`.
+
+### 3. Findings
+
+- Gateway ping returned 100% packet loss.
+- ARP neighbor entry showed the gateway MAC address and `REACHABLE` state.
+- DNS resolution successfully returned an IPv6 address for google.com.
+- External HTTPS connectivity was successful.
+- Google returned HTTP/2 301 (permanent redirect).
+
+### 4. Root Cause / Assessment
+
+The gateway did not respond to ICMP echo requests. However, ARP resolution and external DNS and HTTPS tests succeeded.
+
+The evidence indicates that external network connectivity was functional during the investigation. ICMP filtering or lack of gateway ping response is a possible explanation; the exact reason was not confirmed.
+
+### 5. Resolution
+
+No network configuration changes were required. The investigation confirmed that DNS resolution and HTTPS connectivity were working.
+
+### 6. Final Status
+
+Investigation completed. No general external connectivity failure was identified.
+
+**Tools Used:** ip route, ping, ip neigh, getent, curl.

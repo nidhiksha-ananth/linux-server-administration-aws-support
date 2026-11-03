@@ -1,0 +1,25 @@
+Incident ID: LINUX-007
+Title: EC2 Disk and Filesystem Investigation
+
+Environment:
+AWS EC2 - Ubuntu 26.04.1 LTS
+Root EBS Volume: 8 GiB
+
+Investigation:
+- Used lsblk to inspect block devices.
+- Used df -Th to check filesystem usage.
+- Used blkid to identify filesystem types.
+- Inspected /etc/fstab.
+- Validated mount configuration using findmnt.
+
+Findings:
+- Root filesystem type: ext4.
+- Root filesystem usage: 31%.
+- Boot and EFI partitions mounted.
+- No filesystem configuration errors found.
+
+Resolution:
+No storage issue identified.
+No configuration changes required.
+
+Status: Resolved.

@@ -1,0 +1,48 @@
+# Incident Report – LINUX-005
+
+**Incident ID:** LINUX-005  
+**Issue:** Website Access Failure – Connection Refused  
+**Environment:** Ubuntu 26.04 LTS on WSL2  
+**Status:** Investigation Completed – Issue Not Reproduced
+
+### 1. Problem Description
+
+A user reported that the application website was unavailable and the browser displayed a "Connection Refused" error.
+
+### 2. Investigation Performed
+
+1. Checked Nginx service status using `systemctl status nginx`.
+2. Confirmed Nginx was active and running.
+3. Checked listening ports using `ss -lntp`.
+4. Confirmed Nginx was listening on port 80.
+5. Tested local HTTP connectivity using `curl -I http://localhost`.
+6. Inspected Nginx error logs using `tail`.
+7. Reviewed access logs using `tail`.
+8. Identified successful HTTP 200 responses.
+9. Checked the Ubuntu IP address using `hostname -I`.
+10. Tested HTTP connectivity through the WSL IP address.
+11. Tested connectivity from Windows PowerShell.
+12. Tested website access through a Windows browser.
+
+### 3. Findings
+
+- Nginx service was active.
+- Port 80 was listening on all IPv4 interfaces.
+- Gunicorn application server was listening on port 8000 locally.
+- Local HTTP request returned HTTP 200 OK.
+- WSL IP request returned HTTP 200 OK.
+- Windows PowerShell request returned HTTP 200 OK.
+- Windows browser successfully loaded the website.
+- No error output was observed from the Nginx error log during inspection.
+
+### 4. Root Cause Assessment
+
+The reported connection-refused issue could not be reproduced during testing.
+
+All tested access paths were working successfully. The original cause therefore remains unconfirmed.
+
+### 5. Resolution / Follow-up
+
+No service or network configuration changes were required.
+
+For further investigation, request the affected user's exact URL, client device, timestamp, and error screenshot

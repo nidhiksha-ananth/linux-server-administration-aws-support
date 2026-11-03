@@ -1,0 +1,26 @@
+Incident ID: LINUX-010
+Title: EC2 IAM Role Configuration
+
+Environment:
+AWS EC2 - Ubuntu 26.04.1 LTS
+Region: ap-south-1
+
+Investigation:
+- Checked EC2 IAM role metadata.
+- Initially found no IAM role attached.
+- Created linux-support-ec2-role.
+- Configured EC2 as the trusted entity.
+- Attached CloudWatchAgentServerPolicy.
+- Attached the role to the EC2 instance.
+- Verified role name using IMDSv2.
+
+Findings:
+- IAM role successfully attached.
+- EC2 instance recognized its assigned role.
+- Temporary credentials were provided through instance metadata.
+
+Resolution:
+Dedicated IAM role attached successfully.
+
+Status: Resolved.
+

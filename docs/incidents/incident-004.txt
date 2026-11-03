@@ -1,0 +1,48 @@
+# Incident Report – LINUX-004
+
+**Incident ID:** LINUX-004  
+**Issue:** SSH Server Installation and Connectivity Verification  
+**Environment:** Ubuntu 26.04 LTS on WSL2  
+**Status:** Resolved and Verified
+
+### 1. Problem Description
+
+The SSH service was unavailable because the OpenSSH server package was not installed on the Ubuntu system.
+
+### 2. Investigation Performed
+
+1. Checked SSH service status using `systemctl status ssh`.
+2. Identified that `ssh.service` could not be found.
+3. Verified package installation status using `dpkg -l openssh-server`.
+4. Confirmed that OpenSSH Server was not installed.
+
+### 3. Resolution
+
+1. Updated package information using `sudo apt update`.
+2. Installed OpenSSH Server using `sudo apt install openssh-server -y`.
+3. Started the SSH service using `sudo systemctl start ssh`.
+4. Verified service status and confirmed `active (running)`.
+
+### 4. Connectivity Verification
+
+1. Checked listening ports using `sudo ss -lntp | grep ':22'`.
+2. Confirmed SSH was listening on IPv4 and IPv6 port 22.
+3. Tested local SSH connectivity using `ssh localhost`.
+4. Successfully authenticated using the Ubuntu user account.
+5. Exited the SSH session using `exit`.
+
+### 5. Log Investigation
+
+1. Inspected SSH service logs using `journalctl -u ssh`.
+2. Identified successful password authentication.
+3. Confirmed that the user session opened successfully.
+4. Searched for failure messages using `grep -i "failed"`.
+5. No matching failure entries were found in the available journal output.
+
+### 6. Final Status
+
+OpenSSH Server was installed and started successfully. SSH service status, port listening, local authentication, and session creation were verified.
+
+**Tools Used:** apt, dpkg, systemctl, ss, ssh, journalctl, grep.
+
+**Environment Note:** Testing was performed locally within Ubuntu on WSL2. Remote access from another machine was not tested.

@@ -1,0 +1,19 @@
+# SSH private keys
+*.pem
+*.key
+
+# AWS credentials
+.aws/
+credentials
+config
+
+# Logs
+logs/
+*.log
+
+# Environment secrets
+.env
+.env.*
+
+# Python cache
+__pycache__/
